@@ -52,18 +52,19 @@ def print_board(self, reveal=False):
                         self.reveal(nx, ny)
         return True
 
-    def play(self):
-        while True:
-            self.print_board()
-            try:
-                x = int(input("Enter x coordinate: "))
-                y = int(input("Enter y coordinate: "))
-                if not self.reveal(x, y):
-                    self.print_board(reveal=True)
-                    print("Game Over! You hit a mine.")
-                    break
-            except ValueError:
-                print("Invalid input. Please enter numbers only.")
+def play(self):
+    while True:
+        self.print_board()
+        try:
+            x = int(input("Enter x coordinate: "))
+            y = int(input("Enter y coordinate: "))
+            if not self.reveal(x, y):
+                self.print_board(reveal=True)
+                print("Game Over! You hit a mine.")
+                break
+        except ValueError:
+            print("Invalid input. Please enter numbers only.")
+
 
 if __name__ == "__main__":
     game = Minesweeper()
