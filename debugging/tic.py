@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def print_board(board):
     for row in board:
         print(" | ".join(row))
@@ -29,16 +31,13 @@ def tic_tac_toe():
         col = int(input("Enter column (0, 1, or 2) for player " + player + ": "))
         if board[row][col] == " ":
             board[row][col] = player
-            if player == "X":
-                player = "O"
-            else:
-                player = "X"
+            player = "O" if player == "X" else "X"
         else:
             print("That spot is already taken! Try again.")
 
     print_board(board)
-  print_board(board)
-winner = "O" if player == "X" else "X"
-print("Player " + winner + " wins!")
+    winner = "O" if player == "X" else "X"
+    print("Player " + winner + " wins!")
 
-tic_tac_toe()
+if __name__ == "__main__":
+    tic_tac_toe()
