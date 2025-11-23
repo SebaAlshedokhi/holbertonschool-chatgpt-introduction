@@ -13,21 +13,22 @@ class Minesweeper:
         self.field = [[' ' for _ in range(width)] for _ in range(height)]
         self.revealed = [[False for _ in range(width)] for _ in range(height)]
 
-    def print_board(self, reveal=False):
+def print_board(self, reveal=False):
+    if not reveal:     # Only clear when NOT revealing the final board
         clear_screen()
-        print('  ' + ' '.join(str(i) for i in range(self.width)))
-        for y in range(self.height):
-            print(y, end=' ')
-            for x in range(self.width):
-                if reveal or self.revealed[y][x]:
-                    if (y * self.width + x) in self.mines:
-                        print('*', end=' ')
-                    else:
-                        count = self.count_mines_nearby(x, y)
-                        print(count if count > 0 else ' ', end=' ')
+    print('  ' + ' '.join(str(i) for i in range(self.width)))
+    for y in range(self.height):
+        print(y, end=' ')
+        for x in range(self.width):
+            if reveal or self.revealed[y][x]:
+                if (y * self.width + x) in self.mines:
+                    print('*', end=' ')
                 else:
-                    print('.', end=' ')
-            print()
+                    count = self.count_mines_nearby(x, y)
+                    print(count if count > 0 else ' ', end=' ')
+            else:
+                print('.', end=' ')
+        print()
 
     def count_mines_nearby(self, x, y):
         count = 0
