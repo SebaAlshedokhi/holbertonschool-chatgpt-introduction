@@ -2,12 +2,14 @@
 import sys
 
 def factorial(n):
+    if n < 0:
+        raise ValueError("Factorial is not defined for negative numbers")
     result = 1
     while n > 1:
         result *= n
-        n -= 1   # decrement n to avoid infinite loop
+        n -= 1
     return result
-  if n < 0:
-    raise ValueError("Factorial is not defined for negative numbers")
-f = factorial(int(sys.argv[1]))
-print(f)
+
+if __name__ == "__main__":
+    f = factorial(int(sys.argv[1]))
+    print(f)
